@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des cadeaux</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Liste des cadeaux')
+
+@section('content')
     <h1>Liste des cadeaux</h1>
 
-    <a href="{{ route('gifts.create') }}">Ajouter un cadeau</a>
-
-    @if($gifts->isEmpty())
+    @if ($gifts->isEmpty())
         <p>Aucun cadeau pour le moment.</p>
     @else
-        <table border="1" cellpadding="6">
+        <table>
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -21,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($gifts as $gift)
+                @foreach ($gifts as $gift)
                     <tr>
                         <td>{{ $gift->name }}</td>
                         <td>{{ number_format($gift->price, 2, ',', ' ') }} €</td>
@@ -41,5 +37,4 @@
             </tbody>
         </table>
     @endif
-</body>
-</html>
+@endsection
