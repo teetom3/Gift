@@ -39,7 +39,8 @@ class GiftCreated extends Mailable
     public function attachments(): array
     {
         return [
-            Attachment::fromPath(public_path('images/bellahu123-gift-4663231.jpg')),
+            Attachment::fromPath(public_path('images/bellahu123-gift-4663231.jpg'))
+                ->as('gift.jpg'),
         ];
     }
 }
