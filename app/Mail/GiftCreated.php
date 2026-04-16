@@ -5,6 +5,7 @@ namespace App\Mail;
 use App\Models\Gift;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -13,7 +14,7 @@ class GiftCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public Gift $gift)
+    public function __construct(protected Gift $gift)
     {
     }
 
@@ -28,11 +29,17 @@ class GiftCreated extends Mailable
     {
         return new Content(
             view: 'emails.gift-created',
+            with: [
+                'giftName'  => $this->gift->name,
+                'giftPrice' => $this->gift->price,
+            ],
         );
     }
 
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath(public_path('images/bellahu123-gift-4663231.jpg')),
+        ];
     }
 }

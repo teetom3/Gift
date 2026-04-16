@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
 </head>
 <body>
-    <p>Le cadeau {{ $gift->name }} a bien été ajouté ({{ number_format($gift->price, 2, ',', ' ') }}€)</p>
+    <p style="color: #0000FF; font-weight: bold;">
+        Le cadeau {{ $giftName }} a bien été ajouté ({{ number_format($giftPrice, 2, ',', ' ') }}€)
+    </p>
 </body>
 </html>
